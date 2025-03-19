@@ -54,7 +54,7 @@ intl-csv2json -i "./translations.csv" -t "./zh.json" -o "./" -l "zh,en,ar"
 
 ## CSV File Format
 
-The first row of the CSV file should contain language names, and translation content starts from the second row. The first column is Chinese text, and subsequent columns are translations in other languages.
+The first line of the CSV file should contain language names, and translation content should start from the second line. The first column contains the source language values corresponding to the JSON template, and subsequent columns contain translations in other languages.
 
 Example:
 | Chinese | English | Arabic |
