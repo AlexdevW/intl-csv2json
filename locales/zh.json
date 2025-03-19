@@ -52,5 +52,8 @@
   "langOption": "显示语言 (zh/en)",
   "example1": "使用默认配置处理多语言文件",
   "example2": "指定组键名处理多语言文件",
-  "items": "项"
+  "items": "项",
+  "csvFormatError": "CSV 文件格式不正确，至少需要标题行和一行数据",
+  "missingTranslationsWarning": "警告: 在 {lang} 语言中发现 {count} 个缺失的翻译:",
+  "missingTranslationItem": "  - 路径: {path}, 源文本: \"{sourceText}\""
 } 

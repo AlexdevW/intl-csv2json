@@ -52,5 +52,8 @@
   "langOption": "Display language (zh/en)",
   "example1": "Process multi-language file with default configuration",
   "example2": "Process multi-language file with specified group key",
-  "items": "items"
+  "items": "items",
+  "csvFormatError": "CSV file format is incorrect, at least a header row and one data row are required",
+  "missingTranslationsWarning": "Warning: Found {count} missing translations in {lang} language:",
+  "missingTranslationItem": "  - Path: {path}, Source text: \"{sourceText}\""
 } 
