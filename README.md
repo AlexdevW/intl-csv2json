@@ -46,7 +46,7 @@ intl-csv2json
 ### 示例
 
 ```bash
-intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./locales"
+intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./" -l "zh,en,tr"
 ```
 
 ## CSV 文件格式
@@ -54,13 +54,13 @@ intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./locales"
 CSV 文件的第一行应包含语言名称，从第二行开始包含翻译内容。第一列为中文文本，后续列为对应的其他语言翻译。
 
 示例：
-| 中文 | 英语 | 土耳其语 | 印度尼西亚语 | 阿拉伯语 |
-| ---- | ---- | -------- | ------------ | -------- |
-| {{num}}金币 | {{num}} Coins | {{num}} Coins | {{num}} Koin | {{num}} عملات |
-| 奖励 | Reward | Ödül | Hadiah | مكافأة |
-| {{num}}倍收益，{{goldNum}}金币 | {{num}}x earnings, {{goldNum}} coins | {{num}}x kazanç, {{goldNum}} coins | {{num}}x penghasilan, {{goldNum}} koin | {{num}}× {{goldNum}} عملات |
-| {{num}}人 | {{num}} People | {{num}} Kişi | {{num}} orang | {{num}} شخصًا |
-| 获胜排行 | Winning Rank | Kazanan Sıralama | Pemenang peringkat | ترتيب الفائزين |
+| 中文 | 英语 | 阿拉伯语 |
+| ---- | ---- | -------- |
+| {{num}}金币 | {{num}} Coins | {{num}} عملات |
+| 奖励 | Reward | مكافأة |
+| {{num}}倍收益，{{goldNum}}金币 | {{num}}x earnings, {{goldNum}} coins | {{num}}× {{goldNum}} عملات |
+| {{num}}人 | {{num}} People | {{num}} شخصًا |
+| 获胜排行 | Winning Rank | ترتيب الفائزين |
 
 ## 模板 JSON 文件格式
 
@@ -92,17 +92,16 @@ en.json
   }
 }
 ```
-tr.json
+ar.json
 
 ```json
 {
-  "price": "{{num}} Coins",
-  "reward": "Ödül",
-  "earnings": "{{num}}x kazanç, {{goldNum}} coins",
-  "winningRank": "Kazanan Sıralama",
+  "price": "{{num}} عملات",
+  "reward": "المكافأة",
+  "earnings": "أرباح {{num}}x، {{goldNum}} عملات",
+  "winningRank": "الترتيب الفائز",
   "common": {
-    "people": "{{num}} Kişi"
+    "people": "{{num}} أشخاص"
   }
 }
 ```
-...id.json, ar.json, ...

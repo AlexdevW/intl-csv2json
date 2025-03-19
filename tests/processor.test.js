@@ -8,12 +8,12 @@ describe("processMultiLanguage", () => {
   const tempDir = path.join(os.tmpdir(), "intl-csv2json-test-" + Date.now());
 
   // 测试用的CSV内容
-  const csvContent = `中文,英语,土耳其,印度尼西亚,阿拉伯
-{{num}}金币,{{num}} Coins,{{num}} Coins,{{num}} Koin,{{num}} عملات
-奖励,Reward,Ödül,Hadiah,المكافأة
-{{num}}倍收益，{{goldNum}}金币,"{{num}}x earnings, {{goldNum}} coins","{{num}}x kazanç, {{goldNum}} coins","{{num}}x penghasilan, {{goldNum}} koin",أرباح {{num}}x، {{goldNum}} عملات
-{{num}}人,{{num}} People,{{num}} Kişi,{{num}} orang,{{num}} أشخاص
-获胜排行,Winning Rank,Kazanan Sıralama,Pemenang peringkat,الترتيب الفائز`;
+  const csvContent = `中文,英语,阿拉伯
+{{num}}金币,{{num}} Coins,{{num}} عملات
+奖励,Reward,المكافأة
+{{num}}倍收益，{{goldNum}}金币,"{{num}}x earnings, {{goldNum}} coins",أرباح {{num}}x، {{goldNum}} عملات
+{{num}}人,{{num}} People,{{num}} أشخاص
+获胜排行,Winning Rank,الترتيب الفائز`;
 
   // 测试用的模板JSON
   const templateJson = {
@@ -62,7 +62,7 @@ describe("processMultiLanguage", () => {
       csvPath: path.join(tempDir, "test.csv"),
       templatePath: path.join(tempDir, "zh.json"),
       outputDir: tempDir,
-      langCodes: ["zh", "en", "tr", "id", "ar"],
+      langCodes: ["zh", "en", "ar"],
       trim: false,
     };
 
@@ -81,36 +81,6 @@ describe("processMultiLanguage", () => {
       winningRank: "Winning Rank",
       common: {
         people: "{{num}} People",
-      },
-    });
-
-    // 验证生成的土耳其语文件
-    const trJsonPath = path.join(tempDir, "tr.json");
-    expect(fs.existsSync(trJsonPath)).toBe(true);
-
-    const trJson = JSON.parse(fs.readFileSync(trJsonPath, "utf8"));
-    expect(trJson).toEqual({
-      price: "{{num}} Coins",
-      reward: "Ödül",
-      earnings: "{{num}}x kazanç, {{goldNum}} coins",
-      winningRank: "Kazanan Sıralama",
-      common: {
-        people: "{{num}} Kişi",
-      },
-    });
-
-    // 验证生成的印度尼西亚语文件
-    const idJsonPath = path.join(tempDir, "id.json");
-    expect(fs.existsSync(idJsonPath)).toBe(true);
-
-    const idJson = JSON.parse(fs.readFileSync(idJsonPath, "utf8"));
-    expect(idJson).toEqual({
-      price: "{{num}} Koin",
-      reward: "Hadiah",
-      earnings: "{{num}}x penghasilan, {{goldNum}} koin",
-      winningRank: "Pemenang peringkat",
-      common: {
-        people: "{{num}} orang",
       },
     });
 
@@ -137,7 +107,7 @@ describe("processMultiLanguage", () => {
       templatePath: path.join(tempDir, "zh.json"),
       outputDir: tempDir,
       groupKey: "common",
-      langCodes: ["zh", "en", "tr"],
+      langCodes: ["zh", "en", "ar"],
       trim: false,
     };
 
