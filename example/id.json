@@ -1,0 +1,9 @@
+{
+  "price": "{{num}} Koin",
+  "reward": "Hadiah",
+  "earnings": "{{num}}x penghasilan, {{goldNum}} koin",
+  "winningRank": "Pemenang peringkat",
+  "common": {
+    "people": "{{num}} orang"
+  }
+}

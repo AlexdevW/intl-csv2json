@@ -1,0 +1,9 @@
+{
+  "price": "{{num}} Coins",
+  "reward": "Reward",
+  "earnings": "{{num}}x earnings, {{goldNum}} coins",
+  "winningRank": "Winning Rank",
+  "common": {
+    "people": "{{num}} People"
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "price": "{{num}}金币",
+    "reward": "奖励",
+    "earnings": "{{num}}倍收益，{{goldNum}}金币",
+    "winningRank": "获胜排行",
+    "common": {
+        "people": "{{num}}人"
+    }
+}

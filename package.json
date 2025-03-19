@@ -1,17 +1,18 @@
 {
-  "name": "i18n-transformer",
+  "name": "i18n-csv2json",
   "version": "0.1.0",
   "description": "多语言文件转换工具，支持 CSV 到 JSON 的转换",
   "main": "lib/processor.js",
   "bin": {
-    "i18n-transformer": "./bin/i18n-transformer.js"
+    "i18n-csv2json": "./bin/i18n-csv2json.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "i18n",
     "csv-to-json",
+    "csv2json",
     "translation",
     "localization",
     "csv",
@@ -32,10 +33,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexdevW/i18n-transformer.git"
+    "url": "git+https://github.com/AlexdevW/i18n-csv2json.git"
   },
   "bugs": {
-    "url": "https://github.com/AlexdevW/i18n-transformer/issues"
+    "url": "https://github.com/AlexdevW/i18n-csv2json/issues"
   },
-  "homepage": "https://github.com/AlexdevW/i18n-transformer#readme"
+  "homepage": "https://github.com/AlexdevW/i18n-csv2json#readme",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
 }

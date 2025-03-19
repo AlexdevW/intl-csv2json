@@ -9,7 +9,7 @@ const chalk = require("chalk");
 const { input, confirm } = require("@inquirer/prompts");
 const os = require("os");
 
-const CONFIG_PATH = path.join(os.homedir(), ".i18n-transformerrc");
+const CONFIG_PATH = path.join(os.homedir(), ".i18n-csv2jsonrc");
 
 // 新增配置管理函数
 function loadConfig() {
@@ -59,7 +59,7 @@ async function promptQuestions() {
       default: lastConfig.outputDir || "./",
     }),
     groupKey: await input({
-      message: "请输入 JSON 组键名（留空则处理根级）:",
+      message: "要处理的组键名（只对指定的组键名进行遍历，留空则处理根级）:",
       default: lastConfig.groupKey || "",
     }),
     trim: await confirm({
@@ -103,7 +103,7 @@ async function main() {
     })
     .option("g", {
       alias: ["group"],
-      describe: "要处理的组键名（只对组键名进行遍历，不对整个json进行遍历，留空则处理根级）",
+      describe: "要处理的组键名（只对指定的组键名数据进行遍历，留空则遍历整个json数据）",
       default: "",
       type: "string",
     })

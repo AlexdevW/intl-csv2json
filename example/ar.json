@@ -1,0 +1,9 @@
+{
+  "price": "{{num}} عملات",
+  "reward": "المكافأة",
+  "earnings": "أرباح {{num}}x، {{goldNum}} عملات",
+  "winningRank": "الترتيب الفائز",
+  "common": {
+    "people": "{{num}} أشخاص"
+  }
+}

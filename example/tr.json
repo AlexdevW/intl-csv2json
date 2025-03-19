@@ -1,0 +1,9 @@
+{
+  "price": "{{num}} Coins",
+  "reward": "Ödül",
+  "earnings": "{{num}}x kazanç, {{goldNum}} coins",
+  "winningRank": "Kazanan Sıralama",
+  "common": {
+    "people": "{{num}} Kişi"
+  }
+}
