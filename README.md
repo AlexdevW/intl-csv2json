@@ -22,7 +22,7 @@ intl-csv2json --input <CSV文件路径> --template <模板JSON文件路径> --ou
 或者使用简写形式：
 
 ```bash
-intl-csv2json -i <CSV文件路径> -t <模板JSON文件路径> -o <输出目录> -l <语言代码列表> -g <JSON分组名> -t
+intl-csv2json -i <CSV文件路径> -t <模板JSON文件路径>
 ```
 
 #### 交互式命令
