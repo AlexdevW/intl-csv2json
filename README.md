@@ -46,7 +46,7 @@ intl-csv2json
 ### 示例
 
 ```bash
-intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./" -l "zh,en,tr"
+intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./" -l "zh,en,ar"
 ```
 
 ## CSV 文件格式
