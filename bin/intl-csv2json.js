@@ -8,6 +8,7 @@ const { hideBin } = require("yargs/helpers");
 const chalk = require("chalk");
 const { input, confirm } = require("@inquirer/prompts");
 const os = require("os");
+const { t, setLanguage } = require("../lib/i18n");
 
 const CONFIG_PATH = path.join(os.homedir(), ".intl-csv2jsonrc");
 
@@ -28,49 +29,49 @@ function saveConfig(config) {
 // 交互式问题函数
 async function promptQuestions() {
   const lastConfig = loadConfig();
-  console.log(chalk.cyan("欢迎使用多语言转换工具！"));
-  console.log(chalk.cyan("请回答以下问题来配置转换过程...\n"));
+  console.log(chalk.cyan(t("welcome")));
+  console.log(chalk.cyan(t("configPrompt") + "\n"));
 
   const answers = {
     csvPath: await input({
-      message: "请输入 CSV 文件路径:",
+      message: t("csvPathPrompt"),
       default: lastConfig.csvPath,
       validate: (value) => {
-        if (!value) return "文件路径不能为空";
+        if (!value) return t("pathEmpty");
         if (path.extname(value).toLowerCase() !== ".csv")
-          return "不是CSV格式文件";
-        if (!fs.existsSync(value)) return "CSV文件不存在";
+          return t("notCsvFile");
+        if (!fs.existsSync(value)) return t("csvNotExist");
         return true;
       },
     }),
     templatePath: await input({
-      message: "请输入模板 JSON 文件路径:",
+      message: t("templatePathPrompt"),
       default: lastConfig.templatePath,
       validate: (value) => {
-        if (!value) return "文件路径不能为空";
-        if (!fs.existsSync(value)) return "模板文件不存在";
+        if (!value) return t("pathEmpty");
+        if (!fs.existsSync(value)) return t("templateNotExist");
         if (path.extname(value).toLowerCase() !== ".json")
-          return "不是JSON格式文件";
+          return t("notJsonFile");
         return true;
       },
     }),
     outputDir: await input({
-      message: "请输入输出目录:",
+      message: t("outputDirPrompt"),
       default: lastConfig.outputDir || "./",
     }),
     groupKey: await input({
-      message: "要处理的组键名（只对指定的组键名进行遍历，留空则处理根级）:",
+      message: t("groupKeyPrompt"),
       default: lastConfig.groupKey || "",
     }),
     trim: await confirm({
-      message: "是否对值进行 trim 处理?",
+      message: t("trimPrompt"),
       default: lastConfig.trim !== undefined ? lastConfig.trim : false,
     }),
     langCodes: await input({
-      message: "请输入语言代码列表(用逗号分隔, 顺序和csv文件中的语言列一致, 根据语言代码生成对应的json文件):",
+      message: t("langCodesPrompt"),
       default: lastConfig.langCodes || "zh,en",
       validate: (value) => {
-        if (!value) return "语言代码不能为空";
+        if (!value) return t("langCodeEmpty");
         return true;
       },
     }),
@@ -83,47 +84,57 @@ async function promptQuestions() {
 // 主函数
 async function main() {
   const argv = yargs(hideBin(process.argv))
-    .usage("用法: $0 [选项]")
+    .usage(t("usage"))
     .option("i", {
       alias: ["input", "csv"],
-      describe: "CSV 文件路径",
+      describe: t("csvOption"),
       type: "string",
     })
     .option("t", {
       alias: ["template"],
-      describe: "模板 JSON 文件路径",
+      describe: t("templateOption"),
       default: "./zh.json",
       type: "string",
     })
     .option("o", {
       alias: ["output"],
-      describe: "输出目录",
+      describe: t("outputOption"),
       default: "./",
       type: "string",
     })
     .option("g", {
       alias: ["group"],
-      describe: "要处理的组键名（只对指定的组键名数据进行遍历，留空则遍历整个json数据）",
+      describe: t("groupOption"),
       default: "",
       type: "string",
     })
     .option("trim", {
-      describe: "是否对值进行 trim 处理",
+      describe: t("trimOption"),
       default: false,
       type: "boolean",
     })
     .option("lang-codes", {
       alias: "l",
-      describe: "语言代码列表, 顺序和CSV文件中的语言列顺序一致, 根据语言代码生成对应的json文件",
+      describe: t("langCodesOption"),
       default: "zh,en",
       type: "string",
     })
-    .example('$0 -i "./多语言.csv"', "使用默认配置处理多语言文件")
-    .example('$0 -i "./多语言.csv" -g "common"', "指定组键名处理多语言文件")
+    .option("lang", {
+      describe: t("langOption"),
+      default: "auto",
+      type: "string",
+    })
+    .example('$0 -i "./language_translations.csv"', t("example1"))
+    .example('$0 -i "./language_translations.csv" -g "common"', t("example2"))
     .help()
     .alias("help", "h")
     .version()
     .alias("version", "v").argv;
+
+  // 设置显示语言
+  if (argv.lang && argv.lang !== "auto") {
+    setLanguage(argv.lang);
+  }
 
   let config;
 
@@ -146,14 +157,14 @@ async function main() {
   const langCodes = config.langCodes.split(",").map((code) => code.trim());
 
   // 显示处理信息
-  console.log(chalk.cyan("\n开始处理多语言文件..."));
-  console.log(chalk.cyan(`CSV 文件: ${chalk.yellow(config.csvPath)}`));
-  console.log(chalk.cyan(`模板文件: ${chalk.yellow(config.templatePath)}`));
-  console.log(chalk.cyan(`输出目录: ${chalk.yellow(config.outputDir)}`));
-  console.log(chalk.cyan(`分组名: ${chalk.yellow(config.groupKey)}`));
-  console.log(chalk.cyan(`语言代码: ${chalk.yellow(langCodes.join(", "))}`));
+  console.log(chalk.cyan("\n" + t("startProcessing")));
+  console.log(chalk.cyan(`${t("csvFile")} ${chalk.yellow(config.csvPath)}`));
+  console.log(chalk.cyan(`${t("templateFile")} ${chalk.yellow(config.templatePath)}`));
+  console.log(chalk.cyan(`${t("outputDir")} ${chalk.yellow(config.outputDir)}`));
+  console.log(chalk.cyan(`${t("groupName")} ${chalk.yellow(config.groupKey)}`));
+  console.log(chalk.cyan(`${t("langCodes")} ${chalk.yellow(langCodes.join(", "))}`));
   console.log(
-    chalk.cyan(`Trim 处理: ${chalk.yellow(config.trim ? "是" : "否")}`)
+    chalk.cyan(`${t("trimProcess")} ${chalk.yellow(config.trim ? t("yes") : t("no"))}`)
   );
   console.log(chalk.cyan("-----------------------------------"));
 
@@ -167,9 +178,9 @@ async function main() {
       trim: config.trim,
       langCodes: langCodes,
     });
-    console.log(chalk.green("✓ 处理完成！"));
+    console.log(chalk.green("✓ " + t("completed")));
   } catch (error) {
-    console.error(chalk.red("处理失败："));
+    console.error(chalk.red(t("processFailed")));
     console.error(chalk.gray(error.stack));
     process.exit(1);
   }

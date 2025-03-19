@@ -1,7 +1,7 @@
 {
   "name": "intl-csv2json",
   "version": "1.0.0",
-  "description": "多语言文件转换工具，将 CSV 格式的翻译文件转换为 JSON 格式",
+  "description": "A tool for converting CSV format translation files to JSON format",
   "main": "lib/processor.js",
   "bin": {
     "intl-csv2json": "./bin/intl-csv2json.js"

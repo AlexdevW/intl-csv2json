@@ -3,58 +3,61 @@
 [![npm version](https://img.shields.io/npm/v/intl-csv2json.svg)](https://www.npmjs.com/package/intl-csv2json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-一个将 CSV 格式的多语言文件转换为 JSON 格式的命令行工具。
+A command-line tool for converting CSV format multilingual files to JSON format.
 
-## 安装
+[中文文档](./README.zh.md) | English
+
+## Installation
 
 ```bash
 npm install -g intl-csv2json
 ```
 
-## 使用方法
+## Usage
 
-### 基本用法
+### Basic Usage
 
 ```bash
-intl-csv2json --input <CSV文件路径> --template <模板JSON文件路径>
+intl-csv2json --input <CSV_FILE_PATH> --template <TEMPLATE_JSON_PATH>
 ```
 
-或者使用简写形式：
+Or use the shorthand form:
 
 ```bash
-intl-csv2json -i <CSV文件路径> -t <模板JSON文件路径>
+intl-csv2json -i <CSV_FILE_PATH> -t <TEMPLATE_JSON_PATH>
 ```
 
-#### 交互式命令
+#### Interactive Command
 
-你也可以使用交互式命令来运行工具
+You can also use the interactive command to run the tool:
 
 ```bash
-# 这将启动一个交互式界面，引导你输入所需的参数
+# This will start an interactive interface to guide you through the required parameters
 intl-csv2json
 ```
 
-### 参数说明
+### Parameters
 
-- `--input`, `-i`: CSV 文件路径（必需）
-- `--template`, `-t`: 模板 JSON 文件路径（必需）
-- `--output`, `-o`: 输出目录（可选，默认为当前目录）
-- `--lang-codes`, `-l`: 语言代码列表，用逗号分隔, 根据语言代码生成对应的 json 文件（可选，默认为 'zh,en'）
-- `--group`, `-g`: 要处理的 JSON 分组 （可选，默认为空）
-- `--trim`: 是否对值进行 trim 处理（可选，默认为 false）
+- `--input`, `-i`: CSV file path (required)
+- `--template`, `-t`: Template JSON file path (required)
+- `--output`, `-o`: Output directory (optional, default is current directory)
+- `--lang-codes`, `-l`: Language code list, comma separated, generates corresponding json files based on language codes (optional, default is 'zh,en')
+- `--group`, `-g`: JSON group to process (optional, default is empty)
+- `--trim`: Whether to trim values (optional, default is false)
+- `--lang`: Display language (optional, 'zh' or 'en', default is auto-detect)
 
-### 示例
+### Example
 
 ```bash
-intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./" -l "zh,en,ar"
+intl-csv2json -i "./translations.csv" -t "./zh.json" -o "./" -l "zh,en,ar"
 ```
 
-## CSV 文件格式
+## CSV File Format
 
-CSV 文件的第一行应包含语言名称，从第二行开始包含翻译内容。第一列为中文文本，后续列为对应的其他语言翻译。
+The first row of the CSV file should contain language names, and translation content starts from the second row. The first column is Chinese text, and subsequent columns are translations in other languages.
 
-示例：
-| 中文 | 英语 | 阿拉伯语 |
+Example:
+| Chinese | English | Arabic |
 | ---- | ---- | -------- |
 | {{num}}金币 | {{num}} Coins | {{num}} عملات |
 | 奖励 | Reward | مكافأة |
@@ -62,7 +65,7 @@ CSV 文件的第一行应包含语言名称，从第二行开始包含翻译内�
 | {{num}}人 | {{num}} People | {{num}} شخصًا |
 | 获胜排行 | Winning Rank | ترتيب الفائزين |
 
-## 模板 JSON 文件格式
+## Template JSON File Format
 
 ```json
 {
@@ -76,9 +79,9 @@ CSV 文件的第一行应包含语言名称，从第二行开始包含翻译内�
 }
 ```
 
-## 输出
+## Output
 
-工具会在指定的输出目录中生成对应语言的 JSON 文件，例如 `en.json`、`tr.json` 等。
+The tool will generate JSON files for corresponding languages in the specified output directory, such as `en.json`, `tr.json`, etc.
 
 en.json
 
@@ -99,11 +102,15 @@ ar.json
 ```json
 {
   "price": "{{num}} عملات",
-  "reward": "المكافأة",
-  "earnings": "أرباح {{num}}x، {{goldNum}} عملات",
-  "winningRank": "الترتيب الفائز",
+  "reward": "مكافأة",
+  "earnings": "{{num}}× {{goldNum}} عملات",
+  "winningRank": "ترتيب الفائزين",
   "common": {
-    "people": "{{num}} أشخاص"
+    "people": "{{num}} شخصًا"
   }
 }
 ```
+
+## License
+
+MIT
