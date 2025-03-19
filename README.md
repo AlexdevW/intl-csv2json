@@ -1,6 +1,6 @@
-# i18n-csv2json
+# intl-csv2json
 
-[![npm version](https://img.shields.io/npm/v/i18n-csv2json.svg)](https://www.npmjs.com/package/i18n-csv2json)
+[![npm version](https://img.shields.io/npm/v/intl-csv2json.svg)](https://www.npmjs.com/package/intl-csv2json)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 一个将 CSV 格式的多语言文件转换为 JSON 格式的命令行工具。
@@ -8,7 +8,7 @@
 ## 安装
 
 ```bash
-npm install -g i18n-csv2json
+npm install -g intl-csv2json
 ```
 
 ## 使用方法
@@ -16,13 +16,13 @@ npm install -g i18n-csv2json
 ### 基本用法
 
 ```bash
-i18n-csv2json --input <CSV文件路径> --template <模板JSON文件路径> --output <输出目录> --lang-codes <语言代码列表> --group <JSON分组名> --trim
+intl-csv2json --input <CSV文件路径> --template <模板JSON文件路径> --output <输出目录> --lang-codes <语言代码列表> --group <JSON分组名> --trim
 ```
 
 或者使用简写形式：
 
 ```bash
-i18n-csv2json -i <CSV文件路径> -t <模板JSON文件路径> -o <输出目录> -l <语言代码列表> -g <JSON分组名> -t
+intl-csv2json -i <CSV文件路径> -t <模板JSON文件路径> -o <输出目录> -l <语言代码列表> -g <JSON分组名> -t
 ```
 
 #### 交互式命令
@@ -31,7 +31,7 @@ i18n-csv2json -i <CSV文件路径> -t <模板JSON文件路径> -o <输出目录>
 
 ```bash
 # 这将启动一个交互式界面，引导你输入所需的参数
-i18n-csv2json 
+intl-csv2json 
 ```
 
 ### 参数说明
@@ -46,7 +46,7 @@ i18n-csv2json
 ### 示例
 
 ```bash
-i18n-csv2json -i "./多语言.csv" -t "./zh.json" -o "./locales"
+intl-csv2json -i "./多语言.csv" -t "./zh.json" -o "./locales"
 ```
 
 ## CSV 文件格式

@@ -1,26 +1,25 @@
 {
-  "name": "i18n-csv2json",
-  "version": "0.1.0",
-  "description": "多语言文件转换工具，支持 CSV 到 JSON 的转换",
+  "name": "intl-csv2json",
+  "version": "1.0.0",
+  "description": "多语言文件转换工具，将 CSV 格式的翻译文件转换为 JSON 格式",
   "main": "lib/processor.js",
   "bin": {
-    "i18n-csv2json": "./bin/i18n-csv2json.js"
+    "intl-csv2json": "./bin/intl-csv2json.js"
   },
   "scripts": {
     "test": "jest"
   },
   "keywords": [
     "i18n",
+    "intl-csv2json",
     "csv-to-json",
     "csv2json",
-    "translation",
-    "localization",
-    "csv",
+    "intl",
+    "internationalization",
     "json",
-    "translation",
     "transformer"
   ],
-  "author": "AlexdevW",
+  "author": "AlexdevW <alexdevw@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@inquirer/prompts": "^7.4.0",
@@ -33,12 +32,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlexdevW/i18n-csv2json.git"
+    "url": "git+https://github.com/AlexdevW/intl-csv2json.git"
   },
   "bugs": {
-    "url": "https://github.com/AlexdevW/i18n-csv2json/issues"
+    "url": "https://github.com/AlexdevW/intl-csv2json/issues"
   },
-  "homepage": "https://github.com/AlexdevW/i18n-csv2json#readme",
+  "homepage": "https://github.com/AlexdevW/intl-csv2json#readme",
   "devDependencies": {
     "jest": "^29.7.0"
   }

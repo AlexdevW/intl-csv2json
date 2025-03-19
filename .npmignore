@@ -1,0 +1,7 @@
+tests/
+example/
+.gitignore
+jest.config.js
+*.test.js 
+node_modules/
+

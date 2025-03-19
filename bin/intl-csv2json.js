@@ -9,7 +9,7 @@ const chalk = require("chalk");
 const { input, confirm } = require("@inquirer/prompts");
 const os = require("os");
 
-const CONFIG_PATH = path.join(os.homedir(), ".i18n-csv2jsonrc");
+const CONFIG_PATH = path.join(os.homedir(), ".intl-csv2jsonrc");
 
 // 新增配置管理函数
 function loadConfig() {

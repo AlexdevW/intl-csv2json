@@ -5,7 +5,7 @@ const os = require("os");
 
 describe("processMultiLanguage", () => {
   // 创建临时目录用于测试
-  const tempDir = path.join(os.tmpdir(), "i18n-csv2json-test-" + Date.now());
+  const tempDir = path.join(os.tmpdir(), "intl-csv2json-test-" + Date.now());
 
   // 测试用的CSV内容
   const csvContent = `中文,英语,土耳其,印度尼西亚,阿拉伯

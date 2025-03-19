@@ -23,6 +23,7 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+.DS_Store
 
 # 环境变量
 .env
