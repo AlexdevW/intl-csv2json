@@ -67,7 +67,7 @@ async function promptQuestions() {
       default: lastConfig.trim !== undefined ? lastConfig.trim : false,
     }),
     langCodes: await input({
-      message: "请输入语言代码列表(用逗号分隔, 顺序和csv文件中的语言列一致):",
+      message: "请输入语言代码列表(用逗号分隔, 顺序和csv文件中的语言列一致, 根据语言代码生成对应的json文件):",
       default: lastConfig.langCodes || "zh,en",
       validate: (value) => {
         if (!value) return "语言代码不能为空";
@@ -114,7 +114,7 @@ async function main() {
     })
     .option("lang-codes", {
       alias: "l",
-      describe: "语言代码列表, 顺序和CSV文件中的语言列顺序一致",
+      describe: "语言代码列表, 顺序和CSV文件中的语言列顺序一致, 根据语言代码生成对应的json文件",
       default: "zh,en",
       type: "string",
     })
