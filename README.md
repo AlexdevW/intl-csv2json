@@ -41,7 +41,7 @@ intl-csv2json
 - `--input`, `-i`: CSV file path (required)
 - `--template`, `-t`: Template JSON file path (required)
 - `--output`, `-o`: Output directory (optional, default is current directory)
-- `--lang-codes`, `-l`: Language code list, comma separated, generates corresponding json files based on language codes (optional, default is 'zh,en')
+- `--lang-codes`, `-l`: Language code list, comma separated, according to the order of the language columns in the CSV file (optional, default is 'zh,en')
 - `--group`, `-g`: JSON group to process (optional, default is empty)
 - `--trim`: Whether to trim values (optional, default is false)
 - `--lang`: Display language (optional, 'zh' or 'en', default is auto-detect)
