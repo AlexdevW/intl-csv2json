@@ -45,11 +45,15 @@ intl-csv2json
 - `--group`, `-g`: 要处理的 JSON 分组 （可选，默认为空）
 - `--trim`: 是否对值进行 trim 处理（可选，默认为 false）
 - `--lang`: 显示语言（可选，'zh'或'en'，默认为自动检测）
+- `--use-template-default`, `-d`: 无翻译时是否使用模板值作为默认值（可选，默认为 false）
 
 ### 示例
 
 ```bash
 intl-csv2json -i "./language_translations.csv" -t "./zh.json" -o "./" -l "zh,en,ar"
+
+# 使用模板值作为缺失翻译的默认值
+intl-csv2json -i "./language_translations.csv" -t "./zh.json" -d
 ```
 
 ## CSV 文件格式

@@ -45,11 +45,15 @@ intl-csv2json
 - `--group`, `-g`: JSON group to process (optional, default is empty)
 - `--trim`: Whether to trim values (optional, default is false)
 - `--lang`: Display language (optional, 'zh' or 'en', default is auto-detect)
+- `--use-template-default`, `-d`: Use template value as default when translation is missing (optional, default is false)
 
 ### Example
 
 ```bash
 intl-csv2json -i "./translations.csv" -t "./zh.json" -o "./" -l "zh,en,ar"
+
+# Use template values as default for missing translations
+intl-csv2json -i "./translations.csv" -t "./zh.json" -d
 ```
 
 ## CSV File Format
