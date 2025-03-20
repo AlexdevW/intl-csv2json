@@ -77,9 +77,10 @@ async function promptQuestions() {
     }),
     useTemplateAsDefault: await confirm({
       message: t("useTemplateDefaultPrompt"),
-      default: lastConfig.useTemplateAsDefault !== undefined 
-        ? lastConfig.useTemplateAsDefault 
-        : false,
+      default:
+        lastConfig.useTemplateAsDefault !== undefined
+          ? lastConfig.useTemplateAsDefault
+          : false,
     }),
   };
 
@@ -172,12 +173,20 @@ async function main() {
   // 显示处理信息
   console.log(chalk.cyan("\n" + t("startProcessing")));
   console.log(chalk.cyan(`${t("csvFile")} ${chalk.yellow(config.csvPath)}`));
-  console.log(chalk.cyan(`${t("templateFile")} ${chalk.yellow(config.templatePath)}`));
-  console.log(chalk.cyan(`${t("outputDir")} ${chalk.yellow(config.outputDir)}`));
-  console.log(chalk.cyan(`${t("groupName")} ${chalk.yellow(config.groupKey)}`));
-  console.log(chalk.cyan(`${t("langCodes")} ${chalk.yellow(langCodes.join(", "))}`));
   console.log(
-    chalk.cyan(`${t("trimProcess")} ${chalk.yellow(config.trim ? t("yes") : t("no"))}`)
+    chalk.cyan(`${t("templateFile")} ${chalk.yellow(config.templatePath)}`)
+  );
+  console.log(
+    chalk.cyan(`${t("outputDir")} ${chalk.yellow(config.outputDir)}`)
+  );
+  console.log(chalk.cyan(`${t("groupName")} ${chalk.yellow(config.groupKey)}`));
+  console.log(
+    chalk.cyan(`${t("langCodes")} ${chalk.yellow(langCodes.join(", "))}`)
+  );
+  console.log(
+    chalk.cyan(
+      `${t("trimProcess")} ${chalk.yellow(config.trim ? t("yes") : t("no"))}`
+    )
   );
   console.log(chalk.cyan("-----------------------------------"));
 
