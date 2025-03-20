@@ -90,7 +90,13 @@ async function promptQuestions() {
 
 // 主函数
 async function main() {
-  const argv = yargs(hideBin(process.argv))
+  // 预先处理语言参数
+  const preArgv = yargs(hideBin(process.argv)).argv;
+  if (preArgv.lang && preArgv.lang !== "auto") {
+    setLanguage(preArgv.lang);
+  }
+
+  const parser = yargs(hideBin(process.argv))
     .usage(t("usage"))
     .option("i", {
       alias: ["input", "csv"],
@@ -126,28 +132,25 @@ async function main() {
       default: "zh,en",
       type: "string",
     })
-    .option("lang", {
-      describe: t("langOption"),
-      default: "auto",
-      type: "string",
-    })
     .option("use-template-default", {
       alias: "d",
       describe: t("useTemplateDefaultOption"),
       default: false,
       type: "boolean",
     })
+    .option("lang", {
+      describe: t("langOption"),
+      default: "auto",
+      type: "string",
+    })
     .example('$0 -i "./language_translations.csv"', t("example1"))
     .example('$0 -i "./language_translations.csv" -g "common"', t("example2"))
     .help()
     .alias("help", "h")
     .version()
-    .alias("version", "v").argv;
+    .alias("version", "v");
 
-  // 设置显示语言
-  if (argv.lang && argv.lang !== "auto") {
-    setLanguage(argv.lang);
-  }
+  const argv = await parser.parse();
 
   let config;
 
