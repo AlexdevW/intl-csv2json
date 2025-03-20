@@ -55,5 +55,8 @@
   "items": "items",
   "csvFormatError": "CSV file format is incorrect, at least a header row and one data row are required",
   "missingTranslationsWarning": "Warning: Found {count} missing translations in {lang} language:",
-  "missingTranslationItem": "  - Path: {path}, Source text: \"{sourceText}\""
+  "missingTranslationItem": "  - Path: {path}, Source text: \"{sourceText}\"",
+  "useTemplateDefaultOption": "Use template value as default when translation is missing",
+  "useTemplateDefaultPrompt": "Use template value as default for missing translations?",
+  "missingTranslationItemWithDefault": "  - Path: {path}, Source text: \"{sourceText}\", Using default: \"{defaultValue}\""
 } 

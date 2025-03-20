@@ -55,5 +55,8 @@
   "items": "项",
   "csvFormatError": "CSV 文件格式不正确，至少需要标题行和一行数据",
   "missingTranslationsWarning": "警告: 在 {lang} 语言中发现 {count} 个缺失的翻译:",
-  "missingTranslationItem": "  - 路径: {path}, 源文本: \"{sourceText}\""
+  "missingTranslationItem": "  - 路径: {path}, 源文本: \"{sourceText}\"",
+  "useTemplateDefaultOption": "无翻译时是否使用模板值作为默认值",
+  "useTemplateDefaultPrompt": "无翻译时使用模板值作为默认值？",
+  "missingTranslationItemWithDefault": "  - 路径: {path}, 源文本: \"{sourceText}\", 使用默认值: \"{defaultValue}\""
 } 

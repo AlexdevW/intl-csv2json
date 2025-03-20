@@ -160,4 +160,36 @@ describe("processMultiLanguage", () => {
     expect(enJson.winningRank).toBe("");
     expect(enJson.common.people).toBe("");
   });
+
+  test("当指定 groupKey 时，如果目标语言文件不存在，应该只生成指定的JSON组数据", async () => {
+    // 设置测试参数，指定只处理common组
+    const options = {
+      csvPath: path.join(tempDir, "test.csv"),
+      templatePath: path.join(tempDir, "zh.json"),
+      outputDir: tempDir,
+      groupKey: "common",
+      langCodes: ["zh", "en"],
+      trim: false,
+    };
+
+    // 确保目标语言文件不存在
+    const enJsonPath = path.join(tempDir, "en.json");
+    if (fs.existsSync(enJsonPath)) {
+      fs.unlinkSync(enJsonPath);
+    }
+
+    // 执行处理函数
+    await processMultiLanguage(options);
+
+    // 验证生成的英语文件
+    expect(fs.existsSync(enJsonPath)).toBe(true);
+    const enJson = JSON.parse(fs.readFileSync(enJsonPath, "utf8"));
+
+    // 验证完整结构被创建
+    expect(enJson).toEqual({
+      common: {
+        people: "{{num}} People", // 只有 common 组的数据被更新
+      },
+    });
+  });
 });

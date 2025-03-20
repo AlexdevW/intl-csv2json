@@ -75,6 +75,12 @@ async function promptQuestions() {
         return true;
       },
     }),
+    useTemplateAsDefault: await confirm({
+      message: t("useTemplateDefaultPrompt"),
+      default: lastConfig.useTemplateAsDefault !== undefined 
+        ? lastConfig.useTemplateAsDefault 
+        : false,
+    }),
   };
 
   saveConfig(answers);
@@ -124,6 +130,12 @@ async function main() {
       default: "auto",
       type: "string",
     })
+    .option("use-template-default", {
+      alias: "d",
+      describe: t("useTemplateDefaultOption"),
+      default: false,
+      type: "boolean",
+    })
     .example('$0 -i "./language_translations.csv"', t("example1"))
     .example('$0 -i "./language_translations.csv" -g "common"', t("example2"))
     .help()
@@ -150,6 +162,7 @@ async function main() {
       groupKey: argv.g,
       trim: argv.trim,
       langCodes: argv.langCodes,
+      useTemplateAsDefault: argv.d,
     };
   }
 
@@ -177,6 +190,7 @@ async function main() {
       groupKey: config.groupKey,
       trim: config.trim,
       langCodes: langCodes,
+      useTemplateAsDefault: config.useTemplateAsDefault,
     });
     console.log(chalk.green("✓ " + t("completed")));
   } catch (error) {
