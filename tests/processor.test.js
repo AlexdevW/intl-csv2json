@@ -123,7 +123,7 @@ describe("processMultiLanguage", () => {
     expect(enJson.common.people).toBe("{{num}} People");
   });
 
-  test("应该在CSV中没有对应翻译时保留原值", async () => {
+  test("应该在CSV中没有对应翻译时保留空字符串", async () => {
     // 创建一个不完整的CSV文件（缺少某些翻译）
     const incompleteCsvContent = `中文,英语
 {{num}}金币,{{num}} Coins
@@ -155,9 +155,9 @@ describe("processMultiLanguage", () => {
     // 确保有翻译的项被正确处理
     expect(enJson.price).toBe("{{num}} Coins");
     expect(enJson.reward).toBe("Reward");
-    // 确保没有翻译的项保留中文原值
-    expect(enJson.earnings).toBe("{{num}}倍收益，{{goldNum}}金币");
-    expect(enJson.winningRank).toBe("获胜排行");
-    expect(enJson.common.people).toBe("{{num}}人");
+    // 确保没有翻译的项保留空字符串
+    expect(enJson.earnings).toBe("");
+    expect(enJson.winningRank).toBe("");
+    expect(enJson.common.people).toBe("");
   });
 });
