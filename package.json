@@ -15,7 +15,7 @@
     "csv-to-json",
     "csv2json",
     "intl",
-    "internationalization",
+    "locale",
     "json",
     "transformer"
   ],
@@ -28,7 +28,7 @@
     "yargs": "^17.7.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.0.0"
   },
   "repository": {
     "type": "git",
