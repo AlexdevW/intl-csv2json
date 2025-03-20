@@ -1,8 +1,9 @@
 {
   "name": "intl-csv2json",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A tool for converting CSV format translation files to JSON format",
   "main": "lib/processor.js",
+  "preferGlobal": true,
   "bin": {
     "intl-csv2json": "./bin/intl-csv2json.js"
   },
